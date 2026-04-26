@@ -3,6 +3,7 @@
     "name":"ping pong game extension",
     "version":"1.0",
     "description":"this is a little ping pong game that you can play in popup of extension",
+    "key":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvzA7gx+j3upFY4Pcm1c8xjyJ+NSdJGiynLafg1eYGGb3WB2kP3aOMcksPXtOp9nplN9MpdupE9OtN2o0TGGw8Qc838uFVHPY7ihLKdDacIt0L3E65s9UQGYmU1LyEshv0zmuqvlDtZcUfQpksXhwdd+bxQjzZQswaNZyAdzzNBfC7Ho2xp8CRhSPeRD/qfhV1BvWAo8zvPuueaM+dEpwqDTetGdAxsPsCWOKChzGAiQYIWh4xVYeJmt6Skxml9zBiRgDfJJiI41wjxbYDEbuJ72xkTnzxfR6DkupKJ9sRSEmzoG/4D+N0SBq/iVotu8XNfUhe5oEctprICqokkZ9/wIDAQAB",
     "action":{
         "default_popup":"popup.html",
         "default_title":"ping pong game extension"
