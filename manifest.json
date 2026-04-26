@@ -1,0 +1,10 @@
+{
+    "manifest_version": 3,
+    "name":"ping pong game extension",
+    "version":"1.0",
+    "description":"this is a little ping pong game that you can play in popup of extension",
+    "action":{
+        "default_popup":"popup.html",
+        "default_title":"ping pong game extension"
+    }
+}

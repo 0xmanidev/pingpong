@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ping Pong</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 360px;
+    height: 540px;
+    background: #f2f0eb;
+    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  .header {
+    padding: 14px 16px 10px;
+    border-bottom: 2px solid #1a1a1a;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .title {
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1a1a1a;
+  }
+
+  .score {
+    font-size: 13px;
+    color: #1a1a1a;
+    letter-spacing: 0.05em;
+  }
+
+  .game-wrap {
+    position: relative;
+    width: 360px;
+    height: 488px;
+    background: #f2f0eb;
+    overflow: hidden;
+  }
+
+  canvas {
+    display: block;
+    width: 360px;
+    height: 488px;
+  }
+
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background: #f2f0eb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    z-index: 10;
+  }
+
+  .overlay.hidden { display: none; }
+
+  .overlay-title {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0.06em;
+    color: #1a1a1a;
+    text-transform: uppercase;
+  }
+
+  .overlay-sub {
+    font-size: 11px;
+    color: #666;
+    text-align: center;
+    line-height: 1.9;
+    max-width: 210px;
+    letter-spacing: 0.02em;
+  }
+
+  .btn {
+    padding: 9px 28px;
+    background: #1a1a1a;
+    color: #f2f0eb;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn:hover { background: #333; }
+  .btn:active { background: #555; }
+
+  .diff-row {
+    display: flex;
+    border: 1.5px solid #1a1a1a;
+  }
+
+  .diff-btn {
+    padding: 7px 16px;
+    background: transparent;
+    border: none;
+    border-right: 1.5px solid #1a1a1a;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888;
+    cursor: pointer;
+  }
+
+  .diff-btn:last-child { border-right: none; }
+
+  .diff-btn.active {
+    background: #1a1a1a;
+    color: #f2f0eb;
+  }
+
+  .diff-btn:hover:not(.active) {
+    color: #1a1a1a;
+  }
+
+  .rule {
+    width: 28px;
+    height: 1.5px;
+    background: #1a1a1a;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <span class="title">Ping Pong</span>
+  <span class="score" id="scoreDisplay">0 &#8212; 0</span>
+</div>
+
+<div class="game-wrap" id="gameWrap">
+  <canvas id="canvas" width="720" height="976"></canvas>
+
+  <div class="overlay" id="startScreen">
+    <div class="overlay-title">Ping Pong</div>
+    <div class="rule"></div>
+    <div class="overlay-sub">Move your mouse to control<br>the left paddle.<br>First to 7 wins.</div>
+    <div class="diff-row">
+      <button class="diff-btn active" data-diff="easy">Easy</button>
+      <button class="diff-btn" data-diff="normal">Normal</button>
+      <button class="diff-btn" data-diff="hard">Hard</button>
+    </div>
+    <button class="btn" id="startBtn">Start game</button>
+  </div>
+
+  <div class="overlay hidden" id="endScreen">
+    <div class="overlay-title" id="endTitle">You win</div>
+    <div class="rule"></div>
+    <div class="overlay-sub" id="endSub">Good game.</div>
+    <button class="btn" id="restartBtn">Play again</button>
+  </div>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
