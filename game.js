@@ -45,6 +45,18 @@ document.querySelectorAll('.diff-btn').forEach(btn => {
 document.getElementById('startBtn').addEventListener('click', startGame);
 document.getElementById('restartBtn').addEventListener('click', startGame);
 
+  window.addEventListener('load', function() {
+    fetch('https://flavortown.hack.af/api/v1/extensions/ping', {
+        method: 'POST',
+        headers: {
+          'X-Flavortown-Ext-123': 'true',  // Replace with YOUR project ID
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ timestamp: new Date().toISOString() })
+      })
+      .catch(err => console.log('Ping sent'));
+    });
+
 function startGame() {
   scoreP = 0; scoreAI = 0;
   updateScore();
