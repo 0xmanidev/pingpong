@@ -49,7 +49,7 @@ document.getElementById('restartBtn').addEventListener('click', startGame);
     fetch('https://flavortown.hack.af/api/v1/extensions/ping', {
         method: 'POST',
         headers: {
-          'X-Flavortown-Ext-123': 'true',  // Replace with YOUR project ID
+          'X-Flavortown-Ext-21281': 'true',  
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ timestamp: new Date().toISOString() })
