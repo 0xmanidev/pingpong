@@ -44,14 +44,21 @@ document.querySelectorAll('.diff-btn').forEach(btn => {
 
 document.getElementById('startBtn').addEventListener('click', startGame);
 document.getElementById('restartBtn').addEventListener('click', startGame);
-    fetch('https://flavortown.hack.af/api/v1/extensions/ping', {
-      method: 'POST',
-      headers: {
-        [`X-Flavortown-Ext-${21281}`]: 'true',
-        'Content-Type': 'application/json'
-      }
-    })
-    .catch(err => console.log('Tracked'));
+fetch('https://flavortown.hackclub.com/api/v1/projects', {
+  headers: {
+    'X-Flavortown-Ext-21281': 'true'
+  }
+})
+.catch(err => console.log('Tracked'));
+
+// Option 2: POST to the user's API endpoint
+fetch('https://flavortown.hackclub.com/api/v1/users', {
+  method: 'GET',
+  headers: {
+    'X-Flavortown-Ext-21281': 'true'
+  }
+})
+.catch(err => console.log('Tracked'));
 async function api(endpoint, method = "GET") {
   return await (
     await fetch(BACKEND + endpoint, {
