@@ -8,6 +8,9 @@ const DIFF = {
   hard:   { aiSpd: 9.0, ballSpd: 8.5, errY: 5  }
 };
 
+const FLAVORTOWN_URL = 'https://flavortown.hackclub.com';
+const PROJECT_ID = 21281;
+
 let diff = 'easy';
 let cfg = DIFF[diff];
 let state = 'idle';
@@ -44,7 +47,34 @@ document.querySelectorAll('.diff-btn').forEach(btn => {
 
 document.getElementById('startBtn').addEventListener('click', startGame);
 document.getElementById('restartBtn').addEventListener('click', startGame);
+function trackExtensionUsage() {
+  fetch(`${FLAVORTOWN_URL}/api/v1/projects`, {
+    method: 'GET',
+    headers: {
+      [`X-Flavortown-Ext-${PROJECT_ID}`]: 'true'
+    }
+  })
+  .then(res => {
+    console.log('✅ Extension tracked! Status:', res.status);
+  })
+  .catch(err => {
+    console.log('⚠️ Tracking error:', err.message);
+  });
+}
+trackExtensionUsage();
 
+.catch(err => console.log('Tracked'));
+async function api(endpoint, method = "GET") {
+  return await (
+    await fetch(BACKEND + endpoint, {
+      method,
+      headers: {
+        Authorization: "Bearer " + get("API_KEY"),
+        "X-Flavortown-Ext-21281": true,
+      },
+    })
+  ).json();
+}
 function startGame() {
   scoreP = 0; scoreAI = 0;
   updateScore();
